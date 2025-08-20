@@ -152,6 +152,13 @@
             </div>
         </div>
 
+        <!-- Run Button -->
+        <div class="flex justify-center my-6">
+            <button id="runButton" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-md transition-transform transform hover:scale-105">
+                Run Calculation
+            </button>
+        </div>
+
         <!-- Outputs -->
         <div>
             <h2 class="text-xl font-semibold text-slate-900 mb-4 text-center">Valuation Results</h2>
@@ -255,11 +262,12 @@
             document.getElementById('npvOutput').textContent = formatMillions(npv);
         }
 
-        const allInputs = document.querySelectorAll('input');
-        allInputs.forEach(input => {
-            input.addEventListener('input', calculateNPV);
-        });
+        const runButton = document.getElementById('runButton');
+        
+        // The model now only calculates when the "Run" button is clicked.
+        runButton.addEventListener('click', calculateNPV);
 
+        // An initial calculation is performed when the page loads.
         window.onload = calculateNPV;
     </script>
 </body>
